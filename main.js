@@ -26,13 +26,14 @@ function requestIosPermission() {
                 if (permissionState === 'granted') {
                     window.addEventListener('deviceorientation', () => { });
                     document.getElementById("iosRequestStatus").innerHTML = "Granted";
-                }
+                } else
                 {
                     document.getElementById("iosRequestStatus").innerHTML = "Denied";
                 }
             })
             .catch(console.error);
     } else {
+        document.getElementById("iosRequestStatus").innerHTML = "Not supported by device";
         console.log('Device probably Android or iOS 12 or earlier, does not understand DeviceOrientationEvent.requestPermission()')
     }
 }
