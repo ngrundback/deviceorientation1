@@ -30,39 +30,53 @@ function testWebSocket()
 
 function onOpen(evt)
 {
-  writeToScreen("CONNECTED");
+  writeToStatus("CONNECTED");
   doSend("WebSocket rocks");
 }
 
 function onClose(evt)
 {
-  
   websocket = null;
-  writeToScreen("DISCONNECTED");
+  writeToStatus("DISCONNECTED");
 }
 
 function onMessage(evt)
 {
-  writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
-  //websocket.close();
+    try {
+        let object = JSON.parse(evt.data);
+        document.getElementById("receivedMessage").innerHTML = 'RESPONSE: ' + JSON.stringify(object, null, 2);
+        let latency = new Date() - new Date(object.timestamp);
+
+        document.getElementById("latency").innerHTML = 'LATENCY: ' + latency;   
+     }
+    catch(err)
+    {
+        document.getElementById("receivedMessage").innerHTML = 'RESPONSE: ' + evt.data;
+    }
 }
 
 function onError(evt)
 {
-  writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+  writeToStatus('<span style="color: red;">ERROR:</span> ' + evt.data);
 }
 
 function doSend(message)
 {
-  writeToScreen("SENT: " + message);
-  websocket.send(message);
+    try {
+        let object = JSON.parse(message);
+        document.getElementById("sentMessage").innerHTML = 'SENT: ' + JSON.stringify(object, null, 2);
+     }
+    catch(err)
+    {
+        document.getElementById("sentMessage").innerHTML = 'SENT: ' + message;
+    }
+    websocket.send(message);
 }
 
-function writeToScreen(message)
+function writeToStatus(message)
 {
-  output.innerHTML = sendCounter + " " + message;
+    document.getElementById("websocketStatus").innerHTML = 'STATUS: ' + message;
 }
-
 
 window.addEventListener("deviceorientation", function(event) 
 {
@@ -70,11 +84,16 @@ window.addEventListener("deviceorientation", function(event)
  if (websocket != null)
  {
      ++sendCounter;
-    doSend(event.alpha + ", " + event.beta + ", " + event.gamma);
+
+     let messageObject = {
+        'counter' : sendCounter,
+        'alpha' : event.alpha,
+        'beta' : event.beta,
+        'gamma' : event.gamma,
+        'timestamp' : new Date()
+    }
+
+    doSend(JSON.stringify(messageObject));
  }
 }
 );
-
-
-
-//window.addEventListener("load", init, false);
