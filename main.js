@@ -1,6 +1,8 @@
 let eventIntervalMs = 100; // not used yet
 let eventsCount = 0;
 
+
+
 console.log('writing to console in main scope.');
 
 if (window.DeviceOrientationEvent) {

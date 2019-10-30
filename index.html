@@ -11,7 +11,10 @@
     <button onclick="buttonFuncion()">Call a function</button> <BR>
     <button onclick="requestIosPermission()">Request iOS permission</button> <BR>
     <button onclick="startEvents()">Start Events</button> <BR>
-    <button onclick="stopEvents()">Start Events</button> <BR>
+    <button onclick="stopEvents()">Stop Events</button> <BR>
+    <BR>
+    <button onclick="connectWebsocket()">Connect WS</button> <BR>
+    <button onclick="closeWebsocket()">Disconnect WS</button> <BR>
 
     <h1>Status</h1>
     iOS Permission asked: <div id="iosRequestStatus">not asked</div>
@@ -22,6 +25,9 @@
     <BR>
     Event Counter: <span id="eventCounterValue">0</span> <BR>
 
+    <div id="output"></div>
+
     <script src="main.js"></script>
+    <script src="websocket.js"></script>
 </body>
 </html>
