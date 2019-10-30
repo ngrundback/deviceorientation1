@@ -1,8 +1,6 @@
 let eventIntervalMs = 100; // not used yet
 let eventsCount = 0;
 
-
-
 console.log('writing to console in main scope.');
 
 if (window.DeviceOrientationEvent) {
@@ -19,38 +17,38 @@ function buttonFuncion() {
 
 function requestIosPermission() {
     console.log('in requestIosPermission()');
-    
     document.getElementById("iosRequestStatus").innerHTML = "Asking...";
 
 
-        // feature detect
-        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-            DeviceOrientationEvent.requestPermission()
-              .then(permissionState => {
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        DeviceOrientationEvent.requestPermission()
+            .then(permissionState => {
                 if (permissionState === 'granted') {
-                  window.addEventListener('deviceorientation', () => {});
+                    window.addEventListener('deviceorientation', () => { });
+                    document.getElementById("iosRequestStatus").innerHTML = "Granted";
                 }
-              })
-              .catch(console.error);
-          } else {
-            console.log('Device probably Android or iOS 12 or earlier, does not understand DeviceOrientationEvent.requestPermission()')
-          }
+                {
+                    document.getElementById("iosRequestStatus").innerHTML = "Denied";
+                }
+            })
+            .catch(console.error);
+    } else {
+        console.log('Device probably Android or iOS 12 or earlier, does not understand DeviceOrientationEvent.requestPermission()')
+    }
 }
 
 function startEvents() {
     console.log('Starting events');
 
-    window.addEventListener("deviceorientation", function(event) 
-		{
-        // console.log('Event' + event);
+    window.addEventListener("deviceorientation", function (event) {
         ++eventsCount;
 
-         document.getElementById("alphaValue").innerHTML = event.alpha;
-         document.getElementById("betaValue").innerHTML = event.beta;
-         document.getElementById("gammaValue").innerHTML = event.gamma;
+        document.getElementById("alphaValue").innerHTML = event.alpha;
+        document.getElementById("betaValue").innerHTML = event.beta;
+        document.getElementById("gammaValue").innerHTML = event.gamma;
 
-         document.getElementById("eventCounterValue").innerHTML = eventsCount;
-        }
+        document.getElementById("eventCounterValue").innerHTML = eventsCount;
+    }
     )
 }
 

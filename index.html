@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Team Labyrinth Test Application</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 </head>
+
 <body>
-    <h1>This is a test </h1>
+    <h1>Team Labyrinth Test Application </h1>
     <button onclick="buttonFuncion()">Call a function</button> <BR>
     <button onclick="requestIosPermission()">Request iOS permission</button> <BR>
     <button onclick="startEvents()">Start Events</button> <BR>
@@ -16,24 +21,25 @@
     <button onclick="connectWebsocket()">Connect WS</button> <BR>
     <button onclick="closeWebsocket()">Disconnect WS</button> <BR>
 
-    <h1>Status</h1>
+    <h2>Status</h2>
     iOS Permission asked: <div id="iosRequestStatus">not asked</div>
     <BR>
     Alpha value: <span id="alphaValue">not received</span> <BR>
-    Beta value:  <span id="betaValue">not received</span> <BR>
+    Beta value: <span id="betaValue">not received</span> <BR>
     Gamma value: <span id="gammaValue">not received</span> <BR>
     <BR>
     Event Counter: <span id="eventCounterValue">0</span> <BR>
 
-    <h1>Sent</h1> 
+    <h2>Sent</h2>
     <pre id="sentMessage"></pre>
-    <h1>Received</h1>
+    <h2>Received</h2>
     <pre id="receivedMessage"></pre>
     <div id="latency"></div>
-    <h1>Websocket Status</h1>
+    <h2>Websocket Status</h2>
     <div id="websocketStatus"></div>
 
     <script src="main.js"></script>
     <script src="websocket.js"></script>
 </body>
+
 </html>
