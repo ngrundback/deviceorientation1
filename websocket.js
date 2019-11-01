@@ -1,4 +1,5 @@
-let wsUri = "wss://echo.websocket.org/";
+//let wsUri = "wss://echo.websocket.org/";
+let wsUri = "ws://localhost:8080/ws";
 let websocket = null;
 let sendCounter = 0;
 
