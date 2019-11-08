@@ -74,13 +74,11 @@ window.addEventListener("deviceorientation", function (event) {
         ++sendCounter;
 
         let messageObject = {
-            'angles' : {
-                'counter': sendCounter,
-                'alpha': event.alpha,
-                'beta': event.beta,
-                'gamma': event.gamma,
-                'timestamp': new Date()
-            }
+                //'counter': sendCounter,
+                //'alpha': event.alpha.toFixed(3),
+                'beta': event.beta.toFixed(3),
+                'gamma': event.gamma.toFixed(3)
+                //'timestamp': new Date()
         }
 
         doSend(JSON.stringify(messageObject));
