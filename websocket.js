@@ -1,6 +1,9 @@
 //let wsUri = "wss://echo.websocket.org/";
 //let wsUri = "ws://localhost:8080/ws";
-let wsUri = "ws://13.53.92.72:8080/ws";
+//let wsUri = "ws://13.53.92.72:8080/ws";
+
+let wsUri = "wss://hugo-chat.herokuapp.com/ws";
+
 
 let websocket = null;
 let sendCounter = 0;
