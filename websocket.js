@@ -62,7 +62,7 @@ function doSend(message) {
 }
 
 function writeToStatus(message) {
-    document.getElementById("websocketStatus").innerHTML = 'STATUS: ' + message;
+    document.getElementById("websocketStatus").innerHTML = 'Addr: ' + wsUri + 'STATUS: ' + message;
 }
 
 window.addEventListener("deviceorientation", function (event) {
